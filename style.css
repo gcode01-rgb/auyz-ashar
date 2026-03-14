@@ -300,3 +300,52 @@ body::before {
     display: block;
     margin-bottom: 5px;
 }
+/* 1. БЕТТІҢ НЕГІЗГІ ПАРАМЕТРЛЕРІ */
+body {
+    background-color: #2c1a0a; /* Негізгі қоңыр түс */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Телефонда карточка жоғарыдан басталсын */
+    min-height: 100vh;
+    font-family: 'Comfortaa', cursive;
+    overflow-x: hidden; /* Оңға-солға теңселмеуі үшін */
+    overflow-y: auto;   /* Тігінен жылжыту (scroll) қосу */
+    position: relative;
+}
+
+/* 2. ФОНДЫ БЕКІТУ (Осы жері өте маңызды) */
+body::before {
+    content: "";
+    position: fixed; /* FIXED — фон экранда қозғалмай тұрады */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Сенің SVG кодындағы мешіт силуэті */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231a0e04" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1; /* Фон карточканың астында қалады */
+}
+
+/* 3. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
+.card {
+    background-color: #ffffff; /* Немесе өзің таңдаған түс */
+    width: 90%; 
+    max-width: 400px;
+    margin: 40px auto; /* Жоғарыдан 40px орын және ортаға қою */
+    position: relative;
+    z-index: 10;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+/* Рамка стилі */
+.ornamental-border {
+    border: 3px double #d4af37;
+    border-radius: 18px;
+    padding: 25px 15px;
+    text-align: center;
+}
