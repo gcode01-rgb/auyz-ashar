@@ -141,6 +141,7 @@ h1 {
 }
 
 /* 1. Белгілерді (Уақыты, Dress Code, Мекен-жайы) реттеу */
+/* 1. Бөлім атауларын (Уақыты, Dress Code, т.б.) реттеу */
 .label { 
     font-family: 'Montserrat', sans-serif !important; /* Анық шрифт */
     font-size: 12px !important; 
@@ -148,29 +149,35 @@ h1 {
     color: #8b4513; 
     font-weight: 700; 
     display: block; 
-    letter-spacing: 2px; 
+    letter-spacing: 2px; /* Әріп арасын ашу */
     margin-bottom: 5px;
+    line-height: 1.2;
 }
 
 /* 2. "ЖҮРЕКТЕС ЖҰПТАР" мәтінін анық ету */
-.invitation-text b {
-    font-family: 'Montserrat', sans-serif;
+.highlight, .invitation-text b {
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: 700;
     color: #5d2e0a;
     display: inline-block;
     margin: 5px 0;
+    font-size: 17px;
 }
 
-/* 3. Таймердің үстіндегі жазуды реттеу */
-.timer-container .label {
-    font-family: 'Montserrat', sans-serif !important;
-    margin-bottom: 10px;
-}
-
-/* 4. Негізгі мәтіннің жол арасын ашу (телефонда жабысып тұрмауы үшін) */
+/* 3. Негізгі мәтін жолдарының арасын ашу */
 .invitation-text {
-    line-height: 1.8 !important;
+    line-height: 1.8 !important; /* Жазулар бір-бірінің үстіне шықпауы үшін */
     font-family: 'Comfortaa', cursive;
+    margin-bottom: 20px;
+}
+
+/* 4. Телефонда сайтты жылжыту (scroll) мүмкіндігі */
+body {
+    overflow-y: auto !important; /* Төмен қарай жылжытуға рұқсат */
+    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 0;
 }
 
 /* Қалған фондық және батырма стильдері өзіңіздің кодыңыздағыдай қалады */
