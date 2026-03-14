@@ -238,3 +238,55 @@ body::before {
     from { opacity: 0.6; filter: drop-shadow(0 0 15px #fff); }
     to { opacity: 1; filter: drop-shadow(0 0 30px #d4af37); }
 }
+/* 1. БЕТТІҢ ЖАЛПЫ ПАРАМЕТРЛЕРІ */
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Көлденең жылжытуды өшіру (ақ жолақтар болмауы үшін) */
+    overflow-y: auto;   /* Тігінен жылжытуды қосу */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Телефонда жоғарыдан басталуы үшін */
+}
+
+/* 2. КАРТОЧКАНЫ ОРТАҒА ҚОЮ ЖӘНЕ РЕТТЕУ */
+.card {
+    width: 92%; /* Телефонда экранның 92% алады, жан-жағында сәл ғана орын қалады */
+    max-width: 400px;
+    margin: 40px auto; /* Жоғары-төменнен 40px орын, оң-солдан ортада */
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box; /* Рамка ішке қарай есептелуі үшін */
+}
+
+/* 3. ФОТОДАҒЫ МӘТІНДЕРДІҢ ЖАБЫСУЫН ТҮЗЕТУ */
+.label { 
+    font-family: 'Montserrat', sans-serif !important; /* Анық шрифт */
+    font-size: 12px !important; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px; /* Мәтін мен белгі арасын ашу */
+}
+
+.invitation-text {
+    line-height: 1.8 !important; /* Мәтін жолдарының арасын ашу */
+    margin-bottom: 20px;
+}
+
+.item p, .location-box p {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* 4. ТЕЛЕФОН ҮШІН МАҢЫЗДЫ ТҮЗЕТУ */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+    .card {
+        width: 95%; /* Телефонда экранға барынша жақындайды */
+        margin: 20px auto;
+    }
+}
