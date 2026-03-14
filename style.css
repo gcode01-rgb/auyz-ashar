@@ -365,3 +365,71 @@ body::before {
     margin-bottom: 5px;
     color: #8b4513;
 }
+/* 1. НЕГІЗГІ БЕТТІ РЕТТЕУ */
+body {
+    /* Көк түсті градиент (Түнгі аспан) */
+    background: linear-gradient(to bottom, #000428, #004e92) no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Телефонда карточка жоғарыдан басталуы үшін */
+    min-height: 100vh;
+    font-family: 'Comfortaa', cursive;
+    overflow-x: hidden; /* Көлденең ақ жолақтарды жою */
+    overflow-y: auto;   /* Тігінен жылжытуды қосу */
+}
+
+/* 2. ФОНДАҒЫ СИЛУЭТТІ БЕКІТУ (Телефонда жоғалмайды) */
+body::before {
+    content: "";
+    position: fixed; /* FIXED — фон экранда қозғалмай тұрады */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Көк фонға лайықталған мөлдір мешіт силуэті */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1; /* Фон карточканың астында қалады */
+}
+
+/* 3. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
+.card {
+    background: #ffffff;
+    width: 90%; 
+    max-width: 380px;
+    margin: 40px auto; /* Жоғарыдан орын қалдырып, ортаға қою */
+    position: relative;
+    z-index: 10;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    box-sizing: border-box;
+}
+
+/* СЕНІҢ РАМКАҢ */
+.ornamental-border {
+    border: 3px double #d4af37;
+    border-radius: 18px;
+    padding: 25px 15px;
+    text-align: center;
+}
+
+/* 4. МӘТІНДЕРДІҢ АРАСЫН АШУ */
+.invitation-text {
+    line-height: 1.8 !important; /* Мәтін жолдары жабыспауы үшін */
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #8b4513;
+}
+
+/* Басқа элементтер (Музыка, Жұлдыздар) кодыңда қалай болса, солай қалады */
