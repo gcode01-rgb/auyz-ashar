@@ -3,62 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ауыз ашарға шақырту</title>
+    <title>8 March Special 🌸</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
-<body>
-    <audio id="bgMusic" loop>
-        <source src="auen.mp3" type="audio/mpeg">
-        Сіздің браузеріңіз аудионы қолдамайды.
-    </audio>
+<body onclick="document.getElementById('bgMusic').play()">   
+    
+    <audio id="bgMusic" loop></audio>
 
-    <div id="musicControl" class="music-btn">
-        <span id="musicIcon">🔇</span>
+    <div class="language-switcher">
+        <button onclick="changeLanguage('kk')">KZ</button>
+        <button onclick="changeLanguage('tr')">TR</button>
+        <button onclick="changeLanguage('ar')">AR</button>
     </div>
 
-    <div class="ramadan-bg">
-        <div class="moon">🌙</div>
-        <div class="stars">✨ ✨ ✨</div>
-    </div>
-
-    <div class="card">
-        <div class="ornamental-border">
-            <div class="content">
-                <div class="header-icon">🕌</div>
-                <h1>Ауыз ашарға шақырту</h1>
-                <p class="bismillah">Бисмилләһи р-Рахмани р-Рахим</p>
-                
-                <p class="invitation-text">
-                    Ассалаумағалейкум Құрметті <b>“ЖҮРЕКТЕС ЖҰПТАР”</b> <br>
-                    Сіздерді рамазан айының берекелі кешін бірге өткізуге, ауыз ашар ақ дастарханымыздың қадірлі қонағы болуға шақырамыз💟 
-                </p>
-
-                <div class="info-grid">
-                    <div class="item">
-                        <span class="label">Уақыты:</span>
-                        <p>16 Наурыз, 19:00</p>
-                    </div>
-                    <div class="item">
-                        <span class="label">Dress Code:</span>
-                        <p>Жұбайларыңмен пара болып кез келген түс</p>
-                    </div>
-                </div>
-
-                <div class="timer-container">
-                    <span class="label">Ауыз ашарға қалды:</span>
-                    <div id="countdown" class="timer-display">00:00:00</div>
-                </div>
-
-                <div class="location-box">
-                    <span class="label">Мекен-жайы:</span>
-                    <p>17-ші микрорайон, 54, "Shafran" рестораны</p>
-                    <a href="https://2gis.kz/aktau/firm/70000001106041768" target="_blank" class="map-btn">
-                        📍 2GIS-пен бару
-                    </a>
-                </div>
+    <section id="home" class="screen active">
+        <div class="hero">
+            <div class="sparkle">✨</div>
+            <h1 data-key="main_title">Асыл жандарға ақ тілек 🌸</h1>
+            <div class="welcome-text">
+                <p data-key="welcome_1">8 наурыз мерекесіне арналған тосынсыйымыз!</p>
+                <p data-key="welcome_2">Есімдеріңізді басып, құттықтауларды оқыңыздар.</p>
+            </div>
+            <div class="menu-grid">
+                <div class="nav-card" onclick="openPage('Anashym')">👩‍🍳<span data-key="name_mom">Анашым</span></div>
+                <div class="nav-card" onclick="openPage('Ruaida apa')">👩‍💼<span data-key="name_ruaida">Руайда Апа</span></div>
+                <div class="nav-card" onclick="openPage('Amira apa')">👩‍🎨<span data-key="name_amira">Амира Апа</span></div>
+                <div class="nav-card" onclick="openPage('Hanin')">👧<span data-key="name_hanin">Ханинтай</span></div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="Anashym" class="screen">
+        <div class="content-card">
+            <div class="photo-container"><img id="img-Anashym" src="" alt="Photo"></div>
+            <h2 data-key="name_mom">Анашым</h2>
+            <p class="wish-text">...</p>
+            <div class="button-group">
+                <button class="back-btn" onclick="openPage('home')" data-key="btn_back">⬅ Артқа</button>
+                <button class="refresh-btn" onclick="refreshWish('Anashym')" data-key="btn_refresh">🔄 Басқа тілек</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="Ruaida apa" class="screen">
+        <div class="content-card">
+            <div class="photo-container"><img id="img-Ruaida apa" src="" alt="Photo"></div>
+            <h2 data-key="name_ruaida">Руайда Апа</h2>
+            <p class="wish-text">...</p>
+            <div class="button-group">
+                <button class="back-btn" onclick="openPage('home')" data-key="btn_back">⬅ Артқа</button>
+                <button class="refresh-btn" onclick="refreshWish('Ruaida apa')" data-key="btn_refresh">🔄 Басқа тілек</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="Amira apa" class="screen">
+        <div class="content-card">
+            <div class="photo-container"><img id="img-Amira apa" src="" alt="Photo"></div>
+            <h2 data-key="name_amira">Амира Апа</h2>
+            <p class="wish-text">...</p>
+            <div class="button-group">
+                <button class="back-btn" onclick="openPage('home')" data-key="btn_back">⬅ Артқа</button>
+                <button class="refresh-btn" onclick="refreshWish('Amira apa')" data-key="btn_refresh">🔄 Басқа тілек</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="Hanin" class="screen">
+        <div class="content-card">
+            <div class="photo-container"><img id="img-Hanin" src="" alt="Photo"></div>
+            <h2 data-key="name_hanin">Ханинтай</h2>
+            <p class="wish-text">...</p>
+            <div class="button-group">
+                <button class="back-btn" onclick="openPage('home')" data-key="btn_back">⬅ Артқа</button>
+                <button class="refresh-btn" onclick="refreshWish('Hanin')" data-key="btn_refresh">🔄 Басқа тілек</button>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
