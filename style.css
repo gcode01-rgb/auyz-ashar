@@ -1,309 +1,9 @@
-/* Жалпы беттің стилі */
-body {
-    background-color: #2c1a0a; /* Қою қоңыр, түн іспетті фон */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Georgia', serif;
-    overflow: hidden; /* Элементтер сыртқа шықпауы үшін */
-    position: relative;
-}
-
-/* 1. ФОНДАҒЫ МЕШІТ СИЛУЭТІ */
-body::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Мешіт суретін интернеттен аламыз (сапалы SVG) */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231a0e04" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192C672,203,768,213,864,197.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    z-index: -2; /* Басқа нәрселердің астында тұруы керек */
-    opacity: 0.8; /* Көп көзге түспеуі үшін аздап күңгірттейміз */
-}
-
-/* 2. АСЕМ ҮЛКЕН ЖАРТЫ АЙ (Фонда) */
-.ramadan-bg {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    z-index: -1;
-}
-
-.moon {
-    font-size: 150px;
-    color: #e8d5b5; /* Ашық бежевый ай */
-    filter: drop-shadow(0 0 20px #d4af37); /* Алтын шұғыла */
-    opacity: 0.5;
-}
-
-/* 3. "ЖАУЫП ТҰРҒАН ЖҰЛДЫЗДАР МЕН АЙЛАР" АНИМАЦИЯСЫ */
-/* Бұл үшін біз JavaScript-ті қолданып, жұлдыздарды динамикалық түрде жасаймыз */
-.particle {
-    position: absolute;
-    top: -50px;
-    color: #d4af37; /* Алтын түс */
-    opacity: 0.7;
-    pointer-events: none; /* Басуға келмейді */
-    z-index: -1;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg); /* Төменге дейін түседі және айналады */
-    }
-}
-
-/* КАРТОЧКА СТИЛІ (Бұрынғыдай, тек аздап жақсарттық) */
-.card {
-    background-color: rgba(255, 250, 240, 0.95); /* Аздап мөлдір */
-    width: 85%;
-    max-width: 400px;
-    padding: 10px;
-    z-index: 10; /* Ең жоғарыда тұруы керек */
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 3px solid #8b4513;
-    animation: slideUp 1.2s ease-out forwards;
-}
-
-/* Қалған стильдерді ескі style.css-тен көшіріп салсаң болады (fadeIn, pulse, music-btn, т.б.) */
-/* Оларды мұнда толық жазбаймын, тек маңыздыларын қостым */
-
-@keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
-.ornamental-border { border: 3px double #8b4513; border-radius: 25px; padding: 30px 20px; text-align: center; }
-h1 { color: #5d2e0a; font-size: 24px; margin-bottom: 5px; opacity: 0; animation: fadeIn 1s 0.5s forwards; }
-.bismillah { color: #bc8f8f; font-size: 14px; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s 0.8s forwards; }
-.invitation-text { color: #3e2723; font-size: 16px; opacity: 0; animation: fadeIn 1s 1.1s forwards; }
-.info-grid { display: flex; justify-content: space-around; margin: 20px 0; border-top: 1px solid #e8d5b5; padding-top: 15px; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
-.timer-container { margin: 20px 0; padding: 15px; background: rgba(139, 69, 19, 0.05); border-radius: 15px; border: 1px dashed #d2b48c; opacity: 0; animation: fadeIn 1s 1.6s forwards; }
-.timer-display { font-size: 26px; font-weight: bold; color: #8b4513; margin-top: 5px; }
-.label { font-size: 11px; text-transform: uppercase; color: #8b4513; font-weight: bold; display: block; }
-.map-btn { display: inline-block; margin-top: 15px; background-color: #2da52d; color: white; text-decoration: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; animation: pulse 2s infinite; }
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-.music-btn { position: fixed; top: 20px; right: 20px; width: 45px; height: 45px; background: rgba(139, 69, 19, 0.8); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 100; border: 2px solid #f5f5dc; }
-/* Google Fonts-тан қазақшаға ыңғайлы шрифттерді қосу */
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&family=Montserrat:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
-body {
-    background-color: #2c1a0a;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /* Негізгі шрифт өзгерді */
-    font-family: 'Comfortaa', cursive;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Карточка ішіндегі мәтіндерді әдемілеу */
-h1 { 
-    color: #5d2e0a; 
-    font-size: 30px; 
-    font-weight: 400;
-    margin-bottom: 5px; 
-    font-family: 'Great Vibes', cursive /* Тақырыпқа арналған шрифт */
-}
-
-.bismillah { 
-    color: #3e2723; 
-    font-size: 14px; 
-    font-style: italic;
-    margin-bottom: 20px; 
-}
-
-.invitation-text { 
-    color: #3e2723; 
-    font-size: 16px; 
-    line-height: 1.6; /* Мәтін арасы ашылды, оқуға оңай */
-    font-weight: 400;
-}
-
-.timer-display { 
-    font-size: 28px; 
-    font-weight: bold; 
-    color: #8b4513; 
-    margin-top: 5px;
-    font-family: 'Montserrat', sans-serif; /* Цифрлар анық көрінуі үшін */
-    letter-spacing: 1px;
-}
-
-/* 1. Белгілерді (Уақыты, Dress Code, Мекен-жайы) реттеу */
-/* 1. Бөлім атауларын (Уақыты, Dress Code, т.б.) реттеу */
-.label { 
-    font-family: 'Montserrat', sans-serif !important; /* Анық шрифт */
-    font-size: 12px !important; 
-    text-transform: uppercase; 
-    color: #8b4513; 
-    font-weight: 700; 
-    display: block; 
-    letter-spacing: 2px; /* Әріп арасын ашу */
-    margin-bottom: 5px;
-    line-height: 1.2;
-}
-
-/* 2. "ЖҮРЕКТЕС ЖҰПТАР" мәтінін анық ету */
-.highlight, .invitation-text b {
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 700;
-    color: #5d2e0a;
-    display: inline-block;
-    margin: 5px 0;
-    font-size: 17px;
-}
-
-/* 3. Негізгі мәтін жолдарының арасын ашу */
-.invitation-text {
-    line-height: 1.8 !important; /* Жазулар бір-бірінің үстіне шықпауы үшін */
-    font-family: 'Comfortaa', cursive;
-    margin-bottom: 20px;
-}
-
-/* 4. Телефонда сайтты жылжыту (scroll) мүмкіндігі */
-body {
-    overflow-y: auto !important; /* Төмен қарай жылжытуға рұқсат */
-    overflow-x: hidden;
-    height: auto;
-    min-height: 100vh;
-    padding: 30px 0;
-}
-
-/* Қалған фондық және батырма стильдері өзіңіздің кодыңыздағыдай қалады */
-/* style.css */
-
-body {
-    /* Градиентті фон: түнгі аспан түстері */
-    background: radial-gradient(circle at top, #1a2a6c, #b21f1f, #fdbb2d); 
-    background: linear-gradient(to bottom, #000428, #004e92); 
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Comfortaa', cursive;
-    /* Телефонда жылжыту (scroll) үшін 'hidden'-ді 'auto'-ға ауыстырамыз */
-    overflow-y: auto; 
-    overflow-x: hidden;
-    position: relative;
-    padding: 40px 0; /* Жиектерде орын болуы үшін */
-}
-
-/* Фондағы мешіт силуэтін нақтылау */
-body::before {
-    content: "";
-    position: fixed; /* Элемент сайтты жылжытқанда орнында тұрады */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 35vh;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23d4af37" fill-opacity="0.1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192C672,203,768,213,864,197.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
-    z-index: 1;
-}
-
-/* Карточка стилі */
-.card {
-    background: rgba(255, 255, 255, 0.9); /* Шыны эффектісі */
-    backdrop-filter: blur(10px);
-    width: 90%; /* Телефон экранына сәйкестеу */
-    max-width: 400px;
-    position: relative;
-    z-index: 10;
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 2px solid #d4af37;
-}
-
-/* Жалтыраған ай */
-.moon {
-    font-size: 80px;
-    filter: drop-shadow(0 0 20px #fff);
-    animation: moonGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes moonGlow {
-    from { opacity: 0.6; filter: drop-shadow(0 0 15px #fff); }
-    to { opacity: 1; filter: drop-shadow(0 0 30px #d4af37); }
-}
-/* Жалпы беттің стилі */
-body {
-    background-color: #2c1a0a; /* Негізгі фон түсі */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* Көлденең ортаға қою */
-    align-items: flex-start; /* Тігінен басынан басталуы (телефон үшін) */
-    min-height: 100vh;
-    font-family: 'Comfortaa', cursive;
-    overflow-x: hidden; /* Оңға-солға жылжымауы үшін */
-    overflow-y: auto;   /* Тігінен жылжытуды қосу */
-    position: relative;
-}
-
-/* 1. ФОНДАҒЫ МЕШІТ СИЛУЭТІ (Бекітілген) */
-body::before {
-    content: "";
-    position: fixed; /* Осы жері маңызды: фон экранда бекіп тұрады */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Сенің файлыңдағы SVG фон коды */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%231a0e04" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
-    z-index: -1; /* Карточканың астында қалуы үшін */
-}
-
-/* 2. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
-.card {
-    background-color: #ffffff; /* Карточканың фоны */
-    width: 90%; /* Телефонда экранның 90%-ын алады */
-    max-width: 400px; /* Компьютерде тым үлкен болмауы үшін */
-    margin: 40px auto; /* Жоғарыдан 40px орын және көлденең ортада тұруы */
-    position: relative;
-    z-index: 10;
-    border-radius: 20px;
-    box-sizing: border-box; /* Рамка өлшемге әсер етпеуі үшін */
-}
-
-/* Рамка стилі */
-.ornamental-border {
-    border: 3px double #d4af37;
-    border-radius: 18px;
-    padding: 25px 15px;
-    text-align: center;
-}
-
-/* Мәтін жолдарының арасын ашу (Скриншоттағы мәселе үшін) */
-.invitation-text {
-    line-height: 1.8; 
-    margin: 15px 0;
-}
-
-.label {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
 /* 1. БЕТТІҢ ЖАЛПЫ ПАРАМЕТРЛЕРІ */
 body {
     /* Көк түсті градиент (Түнгі аспан стилі) */
-    background: linear-gradient(to bottom, #000428, #004e92);
+    background: #000428; 
+    background: linear-gradient(to bottom, #000428, #004e92) no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
@@ -311,117 +11,53 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     font-family: 'Comfortaa', cursive;
-    overflow-x: hidden; /* Жан-жағындағы ақ бос орындарды жояды */
-    overflow-y: auto;   /* Жылжытуды қосады */
+    overflow-x: hidden; 
+    overflow-y: auto;   
     position: relative;
 }
 
-/* 2. ФОНДЫ БЕКІТУ (Телефонда өшіп қалмауы үшін) */
+/* 2. ФОНДАҒЫ МЕШІТ СИЛУЭТІ (Телефонға лайықталған) */
 body::before {
     content: "";
-    position: fixed; /* FIXED — фонды экранға бекітеді */
-    top: 0;
+    position: fixed; 
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Көк түске сай келетін мешіт силуэті */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23d4af37" fill-opacity="0.1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
-    background-size: cover;
+    /* Көк фонға сай келетін мөлдір мешіт силуэті */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.07" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
+    background-size: contain; /* Телефонда сурет созылып кетпеуі үшін */
     background-position: bottom;
-    z-index: -1; /* Фон карточканың астында қалады */
+    background-repeat: no-repeat;
+    z-index: -1; 
 }
 
 /* 3. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
 .card {
-    background: rgba(255, 255, 255, 0.95); /* Сәл мөлдір ақ түс */
+    background: rgba(255, 255, 255, 0.98); 
     width: 90%; 
     max-width: 380px;
-    margin: 40px auto; /* Ортаға дәл қояды */
+    margin: 60px auto; /* Жоғарыдан көбірек орын */
     position: relative;
     z-index: 10;
     border-radius: 25px;
-    border: 3px double #d4af37; /* Алтын рамка */
-    box-sizing: border-box;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.ornamental-border {
-    padding: 25px 15px;
-    text-align: center;
-}
-
-/* 4. МӘТІНДЕРДІҢ АРАСЫН АШУ */
-.invitation-text {
-    line-height: 1.8 !important; /* Жазулар жабыспауы үшін */
-    font-size: 16px;
-    color: #1a2a6c;
-    margin: 15px 0;
-}
-
-.label {
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    color: #8b4513;
-}
-/* 1. НЕГІЗГІ БЕТТІ РЕТТЕУ */
-body {
-    /* Көк түсті градиент (Түнгі аспан) */
-    background: linear-gradient(to bottom, #000428, #004e92) no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Телефонда карточка жоғарыдан басталуы үшін */
-    min-height: 100vh;
-    font-family: 'Comfortaa', cursive;
-    overflow-x: hidden; /* Көлденең ақ жолақтарды жою */
-    overflow-y: auto;   /* Тігінен жылжытуды қосу */
-}
-
-/* 2. ФОНДАҒЫ СИЛУЭТТІ БЕКІТУ (Телефонда жоғалмайды) */
-body::before {
-    content: "";
-    position: fixed; /* FIXED — фон экранда қозғалмай тұрады */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Көк фонға лайықталған мөлдір мешіт силуэті */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
-    z-index: -1; /* Фон карточканың астында қалады */
-}
-
-/* 3. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
-.card {
-    background: #ffffff;
-    width: 90%; 
-    max-width: 380px;
-    margin: 40px auto; /* Жоғарыдан орын қалдырып, ортаға қою */
-    position: relative;
-    z-index: 10;
-    border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     box-sizing: border-box;
 }
 
-/* СЕНІҢ РАМКАҢ */
 .ornamental-border {
     border: 3px double #d4af37;
-    border-radius: 18px;
-    padding: 25px 15px;
+    border-radius: 22px;
+    padding: 30px 20px;
     text-align: center;
 }
 
 /* 4. МӘТІНДЕРДІҢ АРАСЫН АШУ */
 .invitation-text {
-    line-height: 1.8 !important; /* Мәтін жолдары жабыспауы үшін */
+    line-height: 1.8 !important; 
     font-size: 16px;
-    margin: 15px 0;
+    margin: 20px 0;
+    color: #1a2a6c;
 }
 
 .label {
@@ -430,6 +66,21 @@ body::before {
     display: block;
     margin-bottom: 5px;
     color: #8b4513;
+    letter-spacing: 1px;
 }
 
-/* Басқа элементтер (Музыка, Жұлдыздар) кодыңда қалай болса, солай қалады */
+/* МУЗЫКА БАТЫРМАСЫ */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+}
