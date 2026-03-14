@@ -68,7 +68,7 @@ function createParticles() {
         
         // Анимация аяқталғаннан кейін элементті өшіру (ресурсты үнемдеу)
         setTimeout(() => {
-            particle.remove(100);
+            particle.remove();
         }, parseFloat(particle.style.animationDuration) * 1000);
     }
 }
