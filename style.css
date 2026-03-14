@@ -140,13 +140,37 @@ h1 {
     letter-spacing: 1px;
 }
 
+/* 1. Белгілерді (Уақыты, Dress Code, Мекен-жайы) реттеу */
 .label { 
-    font-size: 10px; 
+    font-family: 'Montserrat', sans-serif !important; /* Анық шрифт */
+    font-size: 12px !important; 
     text-transform: uppercase; 
     color: #8b4513; 
     font-weight: 700; 
     display: block; 
-    letter-spacing: 2px; /* Әріптер арасы ашық, стильді көрінеді */
+    letter-spacing: 2px; 
+    margin-bottom: 5px;
+}
+
+/* 2. "ЖҮРЕКТЕС ЖҰПТАР" мәтінін анық ету */
+.invitation-text b {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #5d2e0a;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+/* 3. Таймердің үстіндегі жазуды реттеу */
+.timer-container .label {
+    font-family: 'Montserrat', sans-serif !important;
+    margin-bottom: 10px;
+}
+
+/* 4. Негізгі мәтіннің жол арасын ашу (телефонда жабысып тұрмауы үшін) */
+.invitation-text {
+    line-height: 1.8 !important;
+    font-family: 'Comfortaa', cursive;
 }
 
 /* Қалған фондық және батырма стильдері өзіңіздің кодыңыздағыдай қалады */
