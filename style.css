@@ -43,11 +43,21 @@ h1 {
     margin-top: 0;
 }
 
+/* "ЖҮРЕКТЕС ЖҰПТАР" мәтінін әдемілеу */
+.invitation-text b {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 12px; /* Өлшемін үлкейттік */
+    color: #8b4513; /* Қоңыр-алтын түс */
+    margin: 20px 0; /* Жоғары-төменнен бос орын */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Жеңіл көлеңке */
+    font-weight: 700;
+}
+
+/* Негізгі мәтіннің оқылуын жақсарту */
 .invitation-text {
-    line-height: 1.8; 
+    line-height: 1.6 !important; /* Жол арасы тым алшақ болмауы үшін */
     font-size: 16px;
-    color: #1a2a6c;
-    margin: 15px 0;
+    padding: 0 10px; /* Шетіне тиіп тұрмауы үшін */
 }
 
 .label {
