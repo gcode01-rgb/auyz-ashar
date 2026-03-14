@@ -48,7 +48,7 @@ musicBtn.addEventListener('click', function() {
 // 3. "ЖАУЫП ТҰРҒАН ЖҰЛДЫЗДАР МЕН АЙЛАР" АНИМАЦИЯСЫН ҚҰРУ
 function createParticles() {
     const container = document.body;
-    const particleCount = 30; // Жұлдыздар саны
+    const particleCount = 15; // Жұлдыздар саны
     const icons = ['✨', '⭐', '🌙']; // Қандай икондар қолданылады
 
     for (let i = 0; i < particleCount; i++) {
