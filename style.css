@@ -1,86 +1,94 @@
 /* 1. БЕТТІҢ ЖАЛПЫ ПАРАМЕТРЛЕРІ */
 body {
-    /* Көк түсті градиент (Түнгі аспан стилі) */
-    background: #000428; 
-    background: linear-gradient(to bottom, #000428, #004e92) no-repeat center center fixed;
-    background-size: cover;
+    background: #0f0c29; /* Түнгі аспан түсі */
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* Карточка жоғарыдан басталуы үшін */
     min-height: 100vh;
-    font-family: 'Comfortaa', cursive;
-    overflow-x: hidden; 
-    overflow-y: auto;   
-    position: relative;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+    /* Бұл маңызды: телефонда төмен қарай жылжытуға рұқсат береді */
+    overflow-y: auto; 
 }
 
-/* 2. ФОНДАҒЫ МЕШІТ СИЛУЭТІ (Телефонға лайықталған) */
+/* 2. ФОНДАҒЫ МЕШІТ (Төменде бекітіліп тұрады) */
 body::before {
     content: "";
-    position: fixed; 
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /* Көк фонға сай келетін мөлдір мешіт силуэті */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.07" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
-    background-size: contain; /* Телефонда сурет созылып кетпеуі үшін */
+    height: 40vh; /* Экранның 40% биіктігін алады */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,192L1440,128L1440,320L0,320Z"></path></svg>');
+    background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    z-index: -1; 
+    z-index: 1; /* Карточканың артында, бірақ градиенттің алдында */
+    pointer-events: none;
 }
 
-/* 3. КАРТОЧКАНЫ ОРТАҒА ҚОЮ */
+/* 3. КАРТОЧКА СТИЛІ */
 .card {
-    background: rgba(255, 255, 255, 0.98); 
-    width: 90%; 
-    max-width: 380px;
-    margin: 60px auto; /* Жоғарыдан көбірек орын */
+    background: rgba(255, 255, 255, 0.95); /* Сәл мөлдір ақ түс */
+    width: 85%; /* Телефон экранының 85 пайызы */
+    max-width: 350px;
+    margin: 40px auto; /* Жоғарыдан және төменнен орын қалдыру */
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     position: relative;
-    z-index: 10;
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    box-sizing: border-box;
+    z-index: 5; /* Карточка фонның бетінде тұрады */
 }
 
 .ornamental-border {
-    border: 3px double #d4af37;
-    border-radius: 22px;
-    padding: 30px 20px;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 20px 15px;
     text-align: center;
 }
 
-/* 4. МӘТІНДЕРДІҢ АРАСЫН АШУ */
-.invitation-text {
-    line-height: 1.8 !important; 
-    font-size: 16px;
-    margin: 20px 0;
+/* 4. МӘТІНДЕР */
+h1 {
+    font-size: 22px;
     color: #1a2a6c;
+    margin-bottom: 10px;
+}
+
+.invitation-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
 }
 
 .label {
-    font-family: 'Montserrat', sans-serif !important;
     font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
     color: #8b4513;
-    letter-spacing: 1px;
+    display: block;
+    margin-top: 10px;
 }
 
-/* МУЗЫКА БАТЫРМАСЫ */
+/* Таймер дисплейі */
+.timer-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4af37;
+    background: #1a2a6c;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* Музыка батырмасы */
 .music-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(212, 175, 55, 0.8);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 15px;
+    right: 15px;
     z-index: 100;
+    background: #d4af37;
+    padding: 8px;
+    border-radius: 50%;
     cursor: pointer;
 }
