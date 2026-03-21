@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background: #000;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      cursor: pointer;
+    }
+
+    /* Музыка туралы ескерту */
+    #music-hint {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ea80b0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid #ea80b0;
+      font-size: 14px;
+      transition: opacity 0.5s;
+    }
+
+    /* --- Жүрекшелер анимациясы --- */
+    .heart-particle {
+      position: absolute;
+      color: rgba(234, 128, 176, 0.6);
+      font-size: 20px;
+      user-select: none;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* --- Негізгі жазулар (Сіздің кодыңыз) --- */
+    #ui .love {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -225px 0 0 -225px;
+      --i: 1;
+    }
+
+    #ui .love_word {
+      color: #ea80b0;
+      font-size: 1.4rem;
+      transform: translateY(-100%) rotateZ(-30deg);
+      text-shadow: 0 0 10px #fff;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    #ui .love_horizontal {
+      animation: horizontal 10000ms infinite alternate ease-in-out;
+      animation-delay: calc(var(--i) * -300ms);
+    }
+    #ui .love_vertical {
+      animation: vertical 20000ms infinite linear;
+      animation-delay: calc(var(--i) * -300ms);
+    }
+
+    @keyframes horizontal {
+      from { transform: translateX(0px); }
+      to   { transform: translateX(450px); }
+    }
+    @keyframes vertical {
+      0%   { transform: translateY(180px); }
+      10%  { transform: translateY(45px); }
+      15%  { transform: translateY(4.5px); }
+      18%  { transform: translateY(0px); }
+      20%  { transform: translateY(4.5px); }
+      25%  { transform: translateY(112.5px); }
+      30%  { transform: translateY(4.5px); }
+      32%  { transform: translateY(0px); }
+      40%  { transform: translateY(45px); }
+      50%  { transform: translateY(180px); }
+      75%  { transform: translateY(450px); }
+      100% { transform: translateY(180px); }
+    }
+  </style>
+</head>
+<body onclick="startEverything()">
+
+  <div id="music-hint">Экранды бас ❤️ (Музыка қосылады)</div>
+  <div id="ui"></div>
+
+  <audio id="myAudio" loop>
+    <source src="https://github.com/gcode01-rgb/lovesimba/blob/main/prvrln_-_Love_me_long_time_71589379.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let started = false;
+
+    function startEverything() {
+      if (started) return;
+      started = true;
+      
+      // Музыканы қосу
+      const audio = document.getElementById('myAudio');
+      audio.play();
+      
+      // Ескертуді өшіру
+      document.getElementById('music-hint').style.opacity = '0';
+      
+      // Жүрекшелерді шығаруды бастау
+      setInterval(createHeart, 300);
+    }
+
+    // Қалқып шығатын жүрекшелер жасау
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    // Негізгі мәтіндерді жасау
+    const N = 100;
+    const ui = document.getElementById('ui');
+
+    for (let i = 1; i <= N; i++) {
+      const love = document.createElement('div');
+      love.className = 'love';
+      love.style.setProperty('--i', i);
+
+      const h = document.createElement('div');
+      h.className = 'love_horizontal';
+
+      const v = document.createElement('div');
+      v.className = 'love_vertical';
+
+      const word = document.createElement('div');
+      word.className = 'love_word';
+      word.textContent = 'сені сүйем Симба';
+
+      v.appendChild(word);
+      h.appendChild(v);
+      love.appendChild(h);
+      ui.appendChild(love);
+    }
+  </script>
+</body>
+</html>
