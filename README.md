@@ -1,1 +1,0 @@
-# auyz-ashar
