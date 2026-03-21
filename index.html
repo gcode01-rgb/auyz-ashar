@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Love Forever</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <style>
     body {
       background: #000;
@@ -30,31 +30,24 @@
       transition: opacity 0.5s;
     }
 
-    /* --- Жүрекшелер анимациясы --- */
+    /* --- Жүрекшелер анимациясы (Оңтайландырылды) --- */
     .heart-particle {
       position: absolute;
-      color: rgba(234, 128, 176, 0.6);
+      color: rgba(234, 128, 176, 0.8);
       font-size: 20px;
       user-select: none;
       pointer-events: none;
+      will-change: transform; /* Телефонда жеңіл жұмыс істеу үшін */
       animation: floatUp linear forwards;
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* --- Негізгі жазулар (Сіздің кодыңыз) --- */
+    /* --- Негізгі жазулар (Сенің кодың, өзгеріссіз) --- */
     #ui .love {
       position: absolute;
       top: 50%;
@@ -117,34 +110,30 @@
       if (started) return;
       started = true;
       
-      // Музыканы қосу
       const audio = document.getElementById('myAudio');
-      audio.play();
+      audio.play().catch(() => console.log("Музыканы қолмен қосыңыз"));
       
-      // Ескертуді өшіру
       document.getElementById('music-hint').style.opacity = '0';
       
-      // Жүрекшелерді шығаруды бастау
-      setInterval(createHeart, 300);
+      // Жүрекшелер санын телефонға лайықтап, бірақ жиі шығатындай еттік
+      setInterval(createHeart, 200); 
     }
 
-    // Қалқып шығатын жүрекшелер жасау
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart-particle';
       heart.innerHTML = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.left = Math.random() * 95 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
       heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
       
       document.body.appendChild(heart);
       
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
+      // Жадты толтырмас үшін тез өшіру
+      setTimeout(() => { heart.remove(); }, 5000);
     }
 
-    // Негізгі мәтіндерді жасау
+    // Сенің негізгі мәтін жасау циклың (Өзгеріссіз)
     const N = 100;
     const ui = document.getElementById('ui');
 
